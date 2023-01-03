@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL= 'http://ec2-44-202-244-46.compute-1.amazonaws.com/dev/api/v1/users/'
+const BASE_URL= 'https://ec2-44-202-244-46.compute-1.amazonaws.com/dev/api/v1/users/'
 
 // 'Access-Control-Allow-Origin' : '*',
 //     'Access-Control-Allow-Headers':'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token',
