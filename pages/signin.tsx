@@ -22,6 +22,8 @@ const SignIn = () => {
     const formik = useAuthFormik((values) => {
         signIn(values).then(res => {
             console.log(res)
+        }).catch(e => {
+            console.log('dream', e)
         })
     })
 

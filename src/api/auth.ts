@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL= 'https://ec2-44-202-244-46.compute-1.amazonaws.com/dev/api/v1/users/'
+const BASE_URL= 'https://4rf4dmw3ba.execute-api.us-east-1.amazonaws.com/dev/api/v1/users/'
 
 // 'Access-Control-Allow-Origin' : '*',
 //     'Access-Control-Allow-Headers':'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token',
@@ -16,7 +16,7 @@ axios.defaults.headers.common['Content-Type'] = 'application/json';
 export const signIn = async ({email, password}: {email: string, password: string}) => {
     try {
         console.log(axios.defaults.headers)
-        return await axios.post(BASE_URL+'signin', {
+        return await axios.post(BASE_URL+'signIn', {
             email, password
         });
     } catch (e){
@@ -26,7 +26,7 @@ export const signIn = async ({email, password}: {email: string, password: string
 
 export const signUp = async (email: string, password: string) => {
     try {
-        return await axios.post(BASE_URL+'signup', {
+        return await axios.post(BASE_URL+'signUp', {
             email, password
         });
     } catch (e){
