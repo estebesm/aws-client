@@ -10,7 +10,7 @@ export const SubmitButton = styled.button`
   color: whitesmoke;
   font-size: var(--fs-lg);
   transition: .2s;
-  &:hover, &:disabled{
+  &:active, &:disabled{
     background-color: var(--color-primary-dark);
   }
 `

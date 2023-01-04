@@ -21,7 +21,7 @@ const Form = styled.form`
 
 const SignIn = () => {
     const router = useRouter()
-    const {signIn, token} = useAuthorization()
+    const {signIn, token, fetching} = useAuthorization()
     const formik = useAuthFormik(signIn)
     useEffect(() => {
         if(token){
@@ -62,7 +62,7 @@ const SignIn = () => {
                         </div>
                         <SubmitButton type={'submit'}
                                       style={{marginTop: 10}}
-                                      disabled={!!(formik.errors.password || formik.errors.email)}
+                                      disabled={fetching}
                         >
                             sign in
                         </SubmitButton>
