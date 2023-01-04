@@ -28,7 +28,7 @@ export const useAuthorization = () => {
     const signUp = useCallback(async ({email, password}: DataForAuth) => {
         setFetching(true)
         try {
-            const data = await signInApi({email, password})
+            const data = await signUpApi({email, password})
             setUserData({token: data?.data.token})
             await signIn({email, password})
         } catch (e){
