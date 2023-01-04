@@ -1,4 +1,4 @@
-import React, {FormEvent} from 'react';
+import React, {FormEvent, useEffect} from 'react';
 import {Container} from "../src/ui/Container";
 import {Paper} from "../src/ui/Paper";
 import {Input} from "../src/ui/Input";
@@ -7,7 +7,8 @@ import Link from "next/link";
 import styled from "styled-components";
 import {ErrorText} from "../src/ui/ErrorText";
 import {useAuthFormik} from "../src/hooks/useAuthFormik";
-import {signIn} from "../src/api/auth";
+import {useAuthorization} from "../src/hooks/useAuthorization";
+import {useRouter} from "next/router";
 
 const Form = styled.form`
   @media (min-width: 575.98px) {
@@ -19,14 +20,14 @@ const Form = styled.form`
 `
 
 const SignIn = () => {
-    const formik = useAuthFormik((values) => {
-        signIn(values).then(res => {
-            console.log(res)
-        }).catch(e => {
-            console.log('dream', e)
-        })
-    })
-
+    const router = useRouter()
+    const {signIn, token} = useAuthorization()
+    const formik = useAuthFormik(signIn)
+    useEffect(() => {
+        if(token){
+            router.push('/')
+        }
+    }, [token])
     const submitHandler = (e: FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         formik.handleSubmit(e);

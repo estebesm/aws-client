@@ -1,9 +1,21 @@
 import Head from 'next/head'
 import { Inter } from '@next/font/google'
+import {useAuthorization} from "../src/hooks/useAuthorization";
+import {useEffect} from "react";
+import {useRouter} from "next/router";
+import {Container} from "../src/ui/Container";
+import {SubmitButton} from "../src/ui/Button";
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+    const {token, logout} = useAuthorization()
+    const router = useRouter()
+    useEffect(() => {
+        if(!token) {
+            router.push('/signin')
+        }
+    }, [token])
   return (
     <>
       <Head>
@@ -12,7 +24,41 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>
-        Ready
+          <Container>
+              <div>
+                  <h1 style={{
+                      color: 'var(--color-primary)',
+                      textAlign: 'center',
+                      fontSize: 32
+                  }}>
+                      Success
+                  </h1>
+                  <h3 style={{
+                      textAlign: 'center',
+                      fontSize: 22
+                  }}>
+                      Your access token:
+                  </h3>
+                  <div style={{
+                      wordWrap: 'break-word',
+                  }}>
+                      <p style={{
+                          wordWrap: 'break-word'
+                      }}>
+                          {token}
+                      </p>
+                  </div>
+                  <div>
+                  <SubmitButton onClick={logout} style={{
+                      maxWidth: 300,
+                      display: 'block',
+                      margin: '20px auto 50px'
+                  }}>
+                      logout
+                  </SubmitButton>
+                  </div>
+              </div>
+          </Container>
       </main>
     </>
   )

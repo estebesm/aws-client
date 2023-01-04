@@ -53,6 +53,11 @@ h1{
     font-weight: var(--fw-normal);
     margin: 10px 0;
 }
+h3{
+    font-weight: var(--fw-normal);
+    margin: 0;
+    padding: 0;
+}
 a{
     color: blue;
     cursor: pointer;
