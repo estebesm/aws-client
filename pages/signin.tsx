@@ -60,9 +60,9 @@ const SignIn = () => {
                             />
                             <ErrorText>{formik.touched.password && formik.errors.password}</ErrorText>
                         </div>
-                        <SubmitButton type={'submit'}
-                                      style={{marginTop: 10}}
+                        <SubmitButton style={{marginTop: 10}}
                                       disabled={fetching}
+                                      fetching={fetching}
                         >
                             sign in
                         </SubmitButton>

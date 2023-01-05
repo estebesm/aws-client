@@ -6,6 +6,7 @@ import {useRouter} from "next/router";
 import {Container} from "../src/ui/Container";
 import {SubmitButton} from "../src/ui/Button";
 
+
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -25,7 +26,9 @@ export default function Home() {
       </Head>
       <main>
           <Container>
-              <div>
+              <div style={{
+                  padding: '20px 0 60px'
+              }}>
                   <h1 style={{
                       color: 'var(--color-primary)',
                       textAlign: 'center',
@@ -49,11 +52,15 @@ export default function Home() {
                       </p>
                   </div>
                   <div>
-                  <SubmitButton onClick={logout} style={{
+                  <SubmitButton onClick={() => {
+                      console.log('eded')
+                      logout()
+                      console.log('click')
+                  }} style={{
                       maxWidth: 300,
                       display: 'block',
                       margin: '20px auto 50px'
-                  }}>
+                  }} type={'button'}>
                       logout
                   </SubmitButton>
                   </div>

@@ -8,7 +8,7 @@ interface InputProps {
 export const Input = styled.input.attrs<InputProps>(props => ({
     error: props.error
 }))<InputProps>`
-    padding: 10px 20px;
+    padding: 12px 20px;
     border-radius: var(--radius);
     background-color: whitesmoke;
     width: 100%;

@@ -8,7 +8,7 @@ interface DataForAuth {
 }
 
 export const useAuthorization = () => {
-    const {setUserData, removeUserData, token} = useContext(AuthorizationContext)
+    const {setUserData, token, removeUserData} = useContext(AuthorizationContext)
 
     const [fetching, setFetching] = useState<boolean>(false)
 
@@ -40,9 +40,9 @@ export const useAuthorization = () => {
 
     }, [setUserData, signIn])
 
-    const logout = () => {
-        setUserData({token: ''})
-    }
+    const logout = useCallback(() => {
+        removeUserData()
+    }, [removeUserData])
 
     return {signIn, token, signUp, logout, fetching}
 }
